@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'application'
+}
+
+group = 'com.spring'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.2'
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: '2.4.2'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'//, version: '2.4.2'
+}
+
+configurations {
+	compile.exclude module: 'spring-boot-starter-tomcat'
+	compile.exclude group: 'org.apache.tomcat'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+application {
+	executableDir = 'custom_bin_dir'
+	mainClass = 'com.spring.conferenceWebApp.ConferenceWebAppApplication'
+}
