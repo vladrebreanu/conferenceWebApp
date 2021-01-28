@@ -3,11 +3,18 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'application'
+	id 'war'
 }
 
 group = 'com.spring'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+mainClassName = "com.spring.conferenceWebApp.Main"
+
+
+
 
 repositories {
 	mavenCentral()
@@ -19,7 +26,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.2'
 	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: '2.4.2'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.2.1.RELEASE'
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+	compile('org.springframework.boot:spring-boot-starter-jdbc:2.4.2')
+	providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: '2.4.2'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'//, version: '2.4.2'
 }
 
@@ -32,7 +45,7 @@ test {
 	useJUnitPlatform()
 }
 
-application {
-	executableDir = 'custom_bin_dir'
-	mainClass = 'com.spring.conferenceWebApp.ConferenceWebAppApplication'
-}
+//application {
+//	executableDir = 'custom_bin_dir'
+//	mainClass = 'com.spring.conferenceWebApp.ConferenceWebAppApplication'
+//}
